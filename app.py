@@ -39,4 +39,4 @@ def getCharacterCount(text):
     newCharCount = [{x['char']:x['count']} for x in charCount]
     return newCharCount
 
-app.run(threaded=True, port=5000)
+app.run()
