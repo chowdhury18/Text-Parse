@@ -38,3 +38,5 @@ def getCharacterCount(text):
     charCount = sorted(charCount, key=lambda data: data['char'])
     newCharCount = [{x['char']:x['count']} for x in charCount]
     return newCharCount
+
+app.run(threaded=True, port=5000)
