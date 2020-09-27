@@ -3,6 +3,12 @@ from flask import Flask, jsonify, request, Response
 app = Flask(__name__)
 
 # route
+@app.route('/', methods=['GET'])
+def welcome():
+    output = {"Message": "You are exploring the text parser application. In-order to test it, please install postman/curl and sent POST request to endpoint /analyze. Follow the instruction as given to complete the POST request.", "Request Body": {"text": "This is a valid sentence."}}
+    return output, 200
+
+
 @app.route('/analyze', methods=['POST'])
 def analyze_text():
     body = request.get_json()
