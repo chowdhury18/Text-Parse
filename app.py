@@ -39,4 +39,5 @@ def getCharacterCount(text):
     newCharCount = [{x['char']:x['count']} for x in charCount]
     return newCharCount
 
+
 app.run()
