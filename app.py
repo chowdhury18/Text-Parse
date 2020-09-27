@@ -40,4 +40,5 @@ def getCharacterCount(text):
     return newCharCount
 
 
-app.run()
+if __name__ == '__main__':
+    app.run()
