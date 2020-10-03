@@ -63,7 +63,61 @@ class TextParser:
         newCharCount = [{x['char']:x['count']} for x in charCount]
         return newCharCount
     
-    
+class TextParser_v2:
+    def __init__(self, text):
+        """
+        Description: 
+            This function initializes the text string requested to parse from the client
+
+        Args:
+            text (str): text string to be parse.           
+        """
+        self.text = text
+
+    def getTextLength(self):
+        """
+        Description: 
+            This function calculates the length of the text string withSpace and withoutSpace counting.
+
+        Returns:
+            json: length of the text string with space and without space
+        """
+        charCount = 0
+        spaceCount = 0
+        for ch in self.text:
+            if ch == " ":
+                charCount += 1
+                spaceCount += 1
+            else:
+                charCount += 1
+        withSpace = charCount
+        withoutSpace = charCount - spaceCount
+        return { "withSpaces":withSpace, "withoutSpaces":withoutSpace }
+
+    def getWordCount(self):
+        """
+        Description: 
+            This function calculates the number of word count in the text string.
+
+        Returns:
+            json: number of words in the text string.
+        """
+        wordCount = 0
+        word = ""
+        count = 0
+        for ch in self.text:
+            count += 1
+            if ch == " ":
+                if len(word) > 0:
+                    wordCount += 1
+                    word = ""
+            else:
+                word += str(ch)
+                if len(word) > 0 and count == len(self.text):
+                    wordCount += 1
+                    word = ""
+        return {"wordCount": wordCount}
+
 
 # route
 @app.route('/', methods=['GET'])
@@ -90,11 +144,16 @@ def analyze_text():
     """
     body = request.get_json()
     text = body["text"]
-    print(text)
-    textParser = TextParser(text)
-    textLength = textParser.getTextLength()
-    wordCount = textParser.getWordCount()
-    characterCount = textParser.getCharacterCount()
+
+    textParser = TextParser(text) # initialing TextParser
+    textLength = textParser.getTextLength() # get textLength
+    wordCount = textParser.getWordCount() # get wordCount
+
+    #textParser_v2 = TextParser_v2(text)
+    #textLength = textParser_v2.getTextLength()
+    #wordCount = textParser_v2.getWordCount()
+    
+    characterCount = textParser.getCharacterCount() # get characterCount
     output = {"textLength":textLength, "wordCount":wordCount, "characterCount": characterCount}
     return output, 200
 
