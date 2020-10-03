@@ -1,8 +1,20 @@
-from app import getTextLength, getWordCount, getCharacterCount
+# Import TextParser class
+from app import TextParser
+
+# example text string
+text = "A solution of Dre@mBroker 2020."
+# initializing the class
+textParser = TextParser(text)
 
 def test_getTextLength():
-    text = "A solution of Dre@mBroker 2020."
-    response = getTextLength(text)
+    """
+    Description: 
+        This function tests the text string length
+
+    Returns:
+        json: number of words in the text string.           
+    """
+    response = textParser.getTextLength()
     withSpaces = response['withSpaces']
     withoutSpaces = response['withoutSpaces']
     expected_withSpaces = 31
@@ -11,15 +23,27 @@ def test_getTextLength():
     assert withoutSpaces == expected_withoutSpaces, "Wrong count of withoutSpaces"
 
 def test_getWordCount():
-    text = "A solution of Dre@mBroker 2020."
-    response = getWordCount(text)
+    """
+    Description: 
+        This function tests the number of word count in the text string.
+
+    Returns:
+        json: number of words in the text string.
+    """
+    response = textParser.getWordCount()
     wordCount = response['wordCount']
     expected_wordCount = 5
     assert  wordCount == expected_wordCount, "Wrong count of words"
 
 def test_getCharacterCount():
-    text = "A solution of Dre@mBroker 2020."
-    response = getCharacterCount(text)
+    """
+    Description: 
+        This function tests the occurence of characters (only alphabets) in the text string. 
+
+    Returns:
+        json: characters (alphabets) occurance in the text string alphabatically.
+    """
+    response = textParser.getCharacterCount()
     characters = len(response)
     expected_characters = 15
     assert  characters == expected_characters, "Wrong count of characters"
