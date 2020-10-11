@@ -1,6 +1,6 @@
 # TextParse
 
-[![Build Status](https://travis-ci.com/chowdhury18/TextParse.svg?branch=master)](https://travis-ci.com/github/chowdhury18/TextParse)
+[![Build Status](https://travis-ci.com/chowdhury18/Text-Parse.svg?branch=master)](https://travis-ci.com/github/chowdhury18/Text-Parse)
 
 This application accepts post requests from the client and parses the given text. The backend service is built on [Flask](https://flask.palletsprojects.com/en/1.1.x/). A simple test case is written using [Pytest](https://docs.pytest.org/en/stable/) and the application is tested using [Travis CI](https://travis-ci.com/). The application is also deployed in [Heroku-Cloud Application Platform](https://www.heroku.com/) and can be accessed following the [link](https://chowdhury-textparser.herokuapp.com/).
 
